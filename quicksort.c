@@ -135,7 +135,7 @@ void *quicksort_threaded(void *args){
 	size_t equalS;
 	size_t greaterS;
 
-	partition_array(pivot, args->data, args->size,
+	partition_array(pivot, arg->data, arg->size,
                     &less, &lessS,
                     &equal, &equalS,
                     &greater, &greaterS);
@@ -211,7 +211,7 @@ void print(const int *arr, size_t num){
 
 int main(int argc, char *argv[]) {
 
-	int print = 0;
+	int printDo = 0;
 	char *filename = NULL;
 
 	if (argc == 2){
@@ -242,7 +242,7 @@ int main(int argc, char *argv[]) {
 	}
 	fclose(file);
 
-	if (print){
+	if (printDo){
 		printf("Unsorted list before non-threaded quicksort:  ");
         	print(data, count);
     	}
@@ -253,11 +253,11 @@ int main(int argc, char *argv[]) {
 	double elapsedT = (double)(end - starting) / CLOCKS_PER_SEC;
 	printf("Non-threaded time:  %0.6f\n", elapsedT);
 
-	if (print){
+	if (printDo){
 		printf("Resulting list:  ");
 		print(sorted1, count);
 	}
-	if (print){
+	if (printDo){
 		printf("Unsorted list before threaded quicksort:  ");
         	print(data, count);
     	}
@@ -276,8 +276,8 @@ int main(int argc, char *argv[]) {
 	end = clock();
 	elapsedT = (double)(end - starting) / CLOCKS_PER_SEC;
 	printf("Threaded time:      %0.6f\n", elapsedT);
-	printf("Threads spawned:    %d\n", count);
-	if (print){
+	printf("Threads spawned:    %d\n", thread_count);
+	if (printDo){
                 printf("Resulting list:  ");
                 print(sorted2, count);
         }
