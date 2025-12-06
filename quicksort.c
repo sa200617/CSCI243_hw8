@@ -11,7 +11,7 @@ typedef struct{
 	int *data;
 }qs_args_t;
 
-int thread_ count = 0;
+int thread_count = 0;
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 void partition_array(int pivot, const int *data, size_t size,
