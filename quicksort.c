@@ -104,7 +104,7 @@ int *quicksort(size_t size, const int *data){
 
 	free(less);
 	free(equal);
-	free(greater_;
+	free(greater);
 	free(sortedLess);
 	free(sortedGreater);
 
