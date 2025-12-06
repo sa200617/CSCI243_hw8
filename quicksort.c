@@ -187,8 +187,6 @@ void *quicksort_threaded(void *args){
 	free(equal);
 	free(sortedLess);
 	free(sortedGreater);
-	free(less);
-	free(greater);
 
 	free(arg->data);
 	free(arg);
