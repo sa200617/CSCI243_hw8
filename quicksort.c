@@ -11,7 +11,7 @@ typedef struct{
 	int *data;
 }qs_args_t;
 
-int count = 0;
+int thread_ count = 0;
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 void partition_array(int pivot, const int *data, size_t size,
@@ -149,7 +149,7 @@ void *quicksort_threaded(void *args){
 
 	if (lessS > 0){
 		pthread_mutex_lock(&lock);
-		count ++;
+		thread_count ++;
 		pthread_mutex_unlock(&lock);
 
 		arg1 = malloc(sizeof(qs_args_t));
@@ -162,7 +162,7 @@ void *quicksort_threaded(void *args){
 
 	 if (greaterS > 0){
                 pthread_mutex_lock(&lock);
-                count ++;
+                thread_count ++;
                 pthread_mutex_unlock(&lock);
 
                 arg2 = malloc(sizeof(qs_args_t));
@@ -203,10 +203,10 @@ void print(const int *arr, size_t num){
 	for (size_t i = 0; i < num; i++){
 		if (i > 0){
 			printf(", ");
-			printf("%d", arr[i]);
 		}
-		printf("\n");
+		printf("%d", arr[i]);
 	}
+	printf("\n");
 }
 
 int main(int argc, char *argv[]) {
@@ -218,7 +218,7 @@ int main(int argc, char *argv[]) {
 		filename = argv[1];
 	}
 	else if(argc == 3  && strcmp(argv[1], "-p") == 0){
-		print = 1;
+		printDo = 1;
 		filename = argv[2];
 	}
 	else{
