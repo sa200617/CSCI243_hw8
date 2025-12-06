@@ -184,8 +184,13 @@ void *quicksort_threaded(void *args){
         }
 
 	int *res = merge(sortedLess,lessS, equal, equalS,sortedGreater, greaterS);
+	free(equal);
+	free(sortedLess);
+	free(sortedGreater);
+	free(less);
+	free(greater);
 
-
+	free(arg->data);
 	free(arg);
 	return res;
 }
