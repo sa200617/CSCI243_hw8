@@ -214,7 +214,7 @@ int main(int argc, char *argv[]) {
 		filename = argv[2];
 	}
 	else{
-		fprintf(stderr, "Usage: ./quicksort [-p]");
+		fprintf(stderr, "usage: ./quicksort [-p] file_of_ints");
 		return 1;
 	}
 
