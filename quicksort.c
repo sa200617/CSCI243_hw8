@@ -69,9 +69,6 @@ int *merge(int *less, size_t lessS, int *equal, size_t equalS,
 			list[pos++] = greater[num];
 		}
 
-		free(less);
-		free(equal);
-		free(greater);
 
 		return list;
 }
@@ -92,9 +89,6 @@ int *quicksort(size_t size, const int *data){
 	int *sortedLess = quicksort(lessS, less);
 	int *sortedGreater = quicksort(greaterS, greater);
 
-	free(less);
-	free(greater);
-
 	int *res = malloc((lessS + greaterS + equalS) * sizeof(int));
 
 	size_t pos = 0;
@@ -108,7 +102,9 @@ int *quicksort(size_t size, const int *data){
 		res[pos++] = sortedGreater[num];
 	}
 
+	free(less);
 	free(equal);
+	free(greater_;
 	free(sortedLess);
 	free(sortedGreater);
 
@@ -189,11 +185,7 @@ void *quicksort_threaded(void *args){
 
 	int *res = merge(sortedLess,lessS, equal, equalS,sortedGreater, greaterS);
 
-	free(equal);
-	free(sortedLess);
-	free(sortedGreater);
 
-	free(arg->data);
 	free(arg);
 	return res;
 }
