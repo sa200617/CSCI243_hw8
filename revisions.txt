@@ -1,0 +1,53 @@
+commit d3d38d30d21f6c5a48c410289c6cfe6b3f740a5e
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Fri Dec 5 22:07:19 2025 -0500
+
+    tried to edit this
+
+commit e24f17ad5d6c203e81133ca204a9e6598a447746
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Fri Dec 5 22:01:47 2025 -0500
+
+    freeded more data
+
+commit 73b1a3874146031a0ec3aab55f05f27e971664cc
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Fri Dec 5 20:57:20 2025 -0500
+
+    fixed the print statement
+
+commit 8dee539f962c0be6ed0a830cf111b05bf232e25d
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Fri Dec 5 20:53:00 2025 -0500
+
+    Fixed a parenthesis issue
+
+commit 2ad90d176d149c00a81ec7cff629c0fcef4a4091
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Fri Dec 5 20:51:11 2025 -0500
+
+    trying to fix memory managment
+
+commit 93ce0194c8a1133786df66e278c01d17e094f552
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Fri Dec 5 20:27:48 2025 -0500
+
+    Fixed the thread_count declaration at the top of the file
+
+commit ff8121f743424d940812751921348d4a4bbd3c82
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Fri Dec 5 20:22:25 2025 -0500
+
+    tried to fix compiling issues
+
+commit 4772bdaca9677e4d4b3e24642911a49c51bd7b10
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Fri Dec 5 18:57:13 2025 -0500
+
+    Tried to fix the errors
+
+commit e6aff31b086c902fb4cb85099bfc636a8f117902
+Author: Suhani Aggarwal <sa7825@rit.edu>
+Date:   Fri Dec 5 18:28:17 2025 -0500
+
+    This is my first implmentation of all of the functions

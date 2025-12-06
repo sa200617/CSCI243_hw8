@@ -14,6 +14,25 @@ typedef struct{
 int thread_count = 0;
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
+/**
+ * partition_array() -> given a pivot and an input array this function will
+ * count the size of the partition and what is in everything. It will allocate
+ * the size for the arrays and copy the values into each.
+ *
+ * 	- less[] -> values that less than the pivot
+ *	- equal[] -> values equal to the pivot
+ *	- greater[] -> values that are more than the pivot
+ *
+ * @param pivot -> The pivot integer used for comparison.
+ * @param data	-> Point the input array.
+ * @param size -> Number of elements in the input array.
+ * @param less -> Output pointer to the less element array.
+ * @param lessS -> Output pointer to the size of less[]
+ * @param equal -> Output pointer to the array that is equal to the pivot.
+ * @param equalS -> output pointer to number of elements in equal[].
+ * @param greater -> output pointer to array that is greater than the pointer.
+ * @param greaterS -> output pointer to the number of elements in greater[]
+ */
 void partition_array(int pivot, const int *data, size_t size,
 			int **less, size_t *lessS, int **equal,
 			size_t *equalS, int **greater, size_t *greaterS){
@@ -50,7 +69,19 @@ void partition_array(int pivot, const int *data, size_t size,
 
 }
 
-
+/**
+ * merge() -> merges three sorted partitions into one array. The three
+ * input arrays are less than the pivot value, equal to the pivot values,
+ * and those that are greater than the pivot values. Quicksort sortes the
+ * outer paritions contenating the arrays.
+ *
+ * @param less -> sorted array values < pivot
+ * @param lessS -> number of elements in less[]
+ * @param equal -> array of values that equal to pivot
+ * @pivot equalS -> number of elements in equal
+ * @pivot greater -> sorted array of values greater than pivot
+ * @pivot greaterS -> number of elements in greater[]
+ */
 int *merge(int *less, size_t lessS, int *equal, size_t equalS,
 		int *greater, size_t greaterS){
 
@@ -73,6 +104,15 @@ int *merge(int *less, size_t lessS, int *equal, size_t equalS,
 		return list;
 }
 
+/**
+ * quicksort() -> The implementation uses the first elements of the array
+ * as the pivots, an partitions the input into three recursively.
+ * merges all the segments into a single sorted array.
+ *
+ * @param size -> number of elements in the input array
+ * @param data -> pointer to the input array of ints.
+ * @return a newly allocated array containing the sorted array 
+ */
 int *quicksort(size_t size, const int *data){
 
 	if (size == 0){
@@ -110,7 +150,16 @@ int *quicksort(size_t size, const int *data){
 
 	return res;
 }
-
+/**
+ * quicksort_threaded -> recursivly performs a standard (single-threaded) quicksort.
+ * This implementation recursiely spawns new threads for less and greater paritions.
+ * Reeives the qs_args_t, and partitions it into three arrays. Each child will then
+ * spwan threads for the non-empty less and greater. Then joins all the childs to obtain
+ * the final results.
+ *
+ * @param args -> pointer to the newley created qs_args_t struct.
+ * @return a newly allocated array containing the sorted input.
+ */
 void *quicksort_threaded(void *args){
 
 	qs_args_t *arg = args;
@@ -193,7 +242,11 @@ void *quicksort_threaded(void *args){
 	return res;
 }
 
-
+/**
+ * print() -> helper function prints all the intergers seperated by a comma.
+ * @param arr -> the pointer to the array of integers
+ * @param num -> number of elements in the array
+ */
 void print(const int *arr, size_t num){
 	for (size_t i = 0; i < num; i++){
 		if (i > 0){
@@ -203,7 +256,15 @@ void print(const int *arr, size_t num){
 	}
 	printf("\n");
 }
-
+/**
+ * This program reads the integers from the file, then will perform non threaded
+ * quicksort and will perform threaded quicksort. If -p is provided, the program additionally will print the 
+ * unsorted list and the sorted result from both.
+ *
+ * @param argc -> argument counter
+ * @param argv -> argument vector
+ * @return 0 on sucess and 1 on error
+ */
 int main(int argc, char *argv[]) {
 
 	int printDo = 0;
